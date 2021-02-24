@@ -1,37 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Total extends Component {
-    
-    /*
-    // You will get this props
-    this.props = {
-        items: Array
-    }
-    */
+// destructure props in the parameter itself
+function Total({items}) {
 
-    render() {
-        const {items} = this.props
+    let total = 0
 
-        // calculate your total with some logic here
-        let total = 0
-        //Hint: Use .reduce()
-        
-        return (
-            <div>
-                <h1>Total</h1>
-                {
-                   items.map((singleItem) => {
-                        return (<div>
-    {singleItem.title} {singleItem.price} x {singleItem.quantity} = {singleItem.price * singleItem.quantity}
-                            
-                        </div>)
-                    })
-                }
+    return (
+        <div>
+            <h1>Total</h1>
+            {
+               items.map((singleItem) => {
+                    return (<div>
+{singleItem.title} {singleItem.price} x {singleItem.quantity} = {singleItem.price * singleItem.quantity}
+                        
+                    </div>)
+                })
+            }
 
-                <div>Final Total is: {total}</div>
-            </div>
-        )
-    }
+            <div>Final Total is: {total}</div>
+        </div>
+    )
 }
 
 export default Total

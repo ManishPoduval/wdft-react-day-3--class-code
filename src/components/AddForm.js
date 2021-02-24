@@ -1,25 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class AddForm extends Component {
-
-    /*
-        // your props will look like this
-        this.props = {
-            onAdd: function
-        }
-
-    */
-
-    render() {
-        const {onAdd} = this.props
-        return (
-            <form onSubmit={onAdd}>
-                <input name="title" type="text" placeholder="Enter title" />
-                <input name="price" type="number" />
-                <button type="submit" >Add Item</button>
-            </form>
-        )
-    }
+// destructure props in the parameter itself
+function AddForm({onAdd}) {
+    return (
+        <form onSubmit={onAdd}>
+            <input name="title" type="text" placeholder="Enter title" />
+            <input name="price" type="number" />
+            <button type="submit" >Add Item</button>
+        </form>
+    )
 }
 
 export default AddForm
+
