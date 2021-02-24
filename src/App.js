@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container, Row, Col} from 'react-bootstrap'
+import Total from './components/Total'
+import Items from './components/Items'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+
+  // This state is for all items on the right hand side in the screen
+  state = {
+    totalItems: []
+  }
+
+
+  handleAddItem = (book, quantity) => {
+    console.log(book)
+    console.log(quantity)
+
+    //let myItem = {...book, quantity}
+
+    // Easy way
+    let myItem = {
+      title: book.title, 
+      price: book.price,
+      quantity: quantity
+    }
+
+    //Always update the state
+    this.setState({
+      totalItems: [...this.state.totalItems, myItem]
+    })
+  }
+
+  // We do prop drilling
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <Items onItemAdd={this.handleAddItem}/>
+          </Col>
+          <Col>
+            <Total items={this.state.totalItems} />
+          </Col>
+        </Row>
+      </Container>
+    )
+  }
 }
 
-export default App;
+export default App 
